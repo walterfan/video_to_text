@@ -21,6 +21,39 @@ def transcribe_audio_with_whisper(audio_file, model_name="base"):
     result = model.transcribe(audio_file)
     return result["text"]
 
+def transcribe_audio_with_segments(audio_file, model_name="base", pause_threshold=1.0):
+
+    model = whisper.load_model(model_name)
+    
+    result = model.transcribe(audio_file, word_timestamps=True)
+    
+    segments = result["segments"]
+    
+    paragraphs = []
+    current_paragraph = []
+    previous_end_time = 0.0
+    
+    for segment in segments:
+        start_time = segment["start"]
+        end_time = segment["end"]
+        text = segment["text"].strip()
+        
+        # create new paragraph if time distance is greater than pause threshold
+        if start_time - previous_end_time > pause_threshold:
+            if current_paragraph:
+                paragraphs.append(" ".join(current_paragraph))
+                current_paragraph = []
+        
+        current_paragraph.append(text)
+        previous_end_time = end_time
+    
+    # the last paragraph
+    if current_paragraph:
+        paragraphs.append(" ".join(current_paragraph))
+    
+    return paragraphs
+
+
 async def translate_text(text, src="en", dest="zh-cn"):
     """Translate text from English to Chinese."""
     translator = Translator()
