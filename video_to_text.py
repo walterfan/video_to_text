@@ -63,19 +63,18 @@ async def translate_text(text, src="en", dest="zh-cn"):
 def do_translate(text_file, text):
     translated_text = asyncio.run(translate_text(text))
     with open(text_file.rsplit(".", 1)[0] + "_cn.txt", "w", encoding="utf-8") as f:
-        f.write(text)
+        f.write(translated_text)
     print("-"*80)
-    print("Transcribed Text:")
-    print(translated_text)
+    print(f"Transcribed Text:\n {translated_text}")
 
 def do_asr(text_file, audio_file):
     print("Transcribing audio with Whisper...")
     text = transcribe_audio_with_whisper(audio_file, model_name="base")  # Use "base", "small", or larger models as needed
-
+    paragraphs = transcribe_audio_with_segments(audio_file, model_name="base", pause_threshold=1.5)
+    text = "\n".join(paragraphs)
     with open(text_file, "w", encoding="utf-8") as f:
         f.write(text)
-    print("ASR Text:")
-    print(text)
+    print(f"ASR Text:\n{text}")
     return text
 
 def main(mp4_file, text_file):
