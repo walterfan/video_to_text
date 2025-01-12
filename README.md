@@ -4,6 +4,14 @@
 A python script to convert mp4 video to text using whisper,
 and translate the text from source language("en" by default) to destination language("zh-cn" by default).
 
+## prerequisite
+
+Please install ffmpeg and required library
+
+```
+brew install ffmpeg
+pip install -r requirements.txt
+```
 
 ## usage
 
