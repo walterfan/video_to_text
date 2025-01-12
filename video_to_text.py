@@ -6,6 +6,10 @@ import whisper
 import argparse
 import asyncio
 from googletrans import Translator
+import warnings
+warnings.filterwarnings("ignore", category=FutureWarning)
+warnings.filterwarnings("ignore", category=UserWarning)
+
 
 def format_time(seconds):
     millis = int((float(seconds) % 1) * 1000)
@@ -22,7 +26,7 @@ def extract_file_info(file_path):
 
 def extract_audio_from_video(mp4_file, audio_file):
     """Extract audio from an MP4 file and save as WAV."""
-    ffmpeg.input(mp4_file).output(audio_file).run()
+    ffmpeg.input(mp4_file).output(audio_file).global_args('-loglevel', 'error').run()
     return audio_file
 
 def transcribe_audio_with_whisper(audio_file, model_name="base"):
@@ -84,20 +88,19 @@ async def translate_text(text, src, dest):
 
 def do_translate(text_file, text, src, dest):
     translated_text = asyncio.run(translate_text(text, src, dest))
-    folder_path, file_name, file_extension = extract_file_info(text_file)
-    with open(os.path.join(folder_path, file_name + "_" + dest + file_extension), "w", encoding="utf-8") as f:
+    dest_file_name = text_file.replace(src, dest)
+    with open(os.path.join(dest_file_name), "w", encoding="utf-8") as f:
         f.write(translated_text)
-    print("-"*80)
-    print(f"Transcribed Text:\n {translated_text}")
+
+    print(f"### Transcribed Text:\n {translated_text}")
 
 def do_asr(audio_file: str, text_file: str, model_name: str):
-    print("Transcribing audio with Whisper...")
     #text = transcribe_audio_with_whisper(audio_file, model_name="base")  # Use "base", "small", or larger models as needed
     paragraphs = transcribe_audio_with_segments(audio_file, model_name=model_name, pause_threshold=1.5)
     text = "\n".join(paragraphs)
     with open(text_file, "w", encoding="utf-8") as f:
         f.write(text)
-    print(f"ASR Text:\n{text}")
+    print(f"### ASR Text:\n{text}")
     return text
 
 def main(video_file: str, text_file: str, model_name: str , src: str, dest: str):
@@ -106,11 +109,11 @@ def main(video_file: str, text_file: str, model_name: str , src: str, dest: str)
     if not text_file:
         text_file = f"{file_path}_{src}.srt"
 
-    print(f"1. Extracting audio {audio_file} from {video_file}...")
+    print(f"## 1. Extracting audio {audio_file} from {video_file}...")
     extract_audio_from_video(video_file, audio_file)
-    print(f"2. Recognizing text from audio {audio_file} to {text_file}...")
+    print(f"## 2. Recognizing text from audio {audio_file} to {text_file}...")
     text = do_asr(audio_file, text_file, model_name)
-    print(f"3. Translate text file {text_file} from {src} to {dest}")
+    print(f"## 3. Translate text file {text_file} from {src} to {dest}")
     do_translate(text_file, text, src, dest)
 
     # Clean up temporary files
