@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block page_content %}
+<div class="row">
+    <div class="col-md-4 col-md-offset-4">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">{{ _('Sign In') }}</h3>
+            </div>
+            <div class="panel-body">
+                <form method="POST">
+                    {{ form.hidden_tag() }}
+                    
+                    <div class="form-group">
+                        {{ form.username.label(class="control-label") }}
+                        {{ form.username(class="form-control") }}
+                        {% if form.username.errors %}
+                            <div class="text-danger">
+                                {% for error in form.username.errors %}
+                                    <small>{{ error }}</small><br>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                    
+                    <div class="form-group">
+                        {{ form.password.label(class="control-label") }}
+                        {{ form.password(class="form-control") }}
+                        {% if form.password.errors %}
+                            <div class="text-danger">
+                                {% for error in form.password.errors %}
+                                    <small>{{ error }}</small><br>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                    
+                    <div class="form-group">
+                        <div class="checkbox">
+                            <label>
+                                {{ form.remember_me() }} {{ form.remember_me.label.text }}
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        {{ form.submit(class="btn btn-primary btn-block") }}
+                    </div>
+                </form>
+                
+                <div class="text-center">
+                    <p>{{ _('New user?') }} <a href="{{ url_for('register') }}">{{ _('Click to register!') }}</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

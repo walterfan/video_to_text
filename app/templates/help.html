@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+
+{% block title %}Help{% endblock %}
+
+{% block page_content %}
+<div class="page-header">
+    <h1>Help & Instructions</h1>
+</div>
+
+<div class="row">
+    <div class="col-md-10 col-md-offset-1">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">How to Use Text Extractor</h3>
+            </div>
+            <div class="panel-body">
+                <h4>Step 1: Upload Your Video</h4>
+                <p>Click the "Choose File" button and select a video file from your computer. Supported formats include:</p>
+                <ul>
+                    <li>MP4 (recommended)</li>
+                    <li>AVI</li>
+                    <li>MOV</li>
+                    <li>MKV</li>
+                </ul>
+                
+                <h4>Step 2: Configure Settings</h4>
+                <ul>
+                    <li><strong>Whisper Model:</strong> Choose the AI model size. Larger models are more accurate but slower.</li>
+                    <li><strong>Source Language:</strong> Select the language spoken in your video, or choose "Auto-detect".</li>
+                    <li><strong>Target Language:</strong> Choose the language for translation (if needed).</li>
+                </ul>
+                
+                <h4>Step 3: Process Video</h4>
+                <p>Click "Process Video" and wait for the AI to:</p>
+                <ol>
+                    <li>Extract audio from your video</li>
+                    <li>Transcribe the audio to text with timestamps</li>
+                    <li>Translate the text (if requested)</li>
+                </ol>
+                
+                <h4>Step 4: View Results</h4>
+                <p>Once processing is complete, you'll see:</p>
+                <ul>
+                    <li>SRT format subtitles (ready for video editing software)</li>
+                    <li>Plain text version</li>
+                    <li>Timeline view with timestamps</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Tips for Best Results</h3>
+            </div>
+            <div class="panel-body">
+                <ul>
+                    <li><strong>Audio Quality:</strong> Clear audio with minimal background noise works best</li>
+                    <li><strong>File Size:</strong> Larger files take longer to process</li>
+                    <li><strong>Language:</strong> Specify the source language for better accuracy</li>
+                    <li><strong>Model Selection:</strong> Use "Large" model for highest accuracy, "Tiny" for fastest processing</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Troubleshooting</h3>
+            </div>
+            <div class="panel-body">
+                <h5>Common Issues:</h5>
+                <ul>
+                    <li><strong>Upload fails:</strong> Check file size (max 500MB) and format</li>
+                    <li><strong>Processing errors:</strong> Try a different Whisper model or check audio quality</li>
+                    <li><strong>Poor transcription:</strong> Ensure clear audio and correct language selection</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

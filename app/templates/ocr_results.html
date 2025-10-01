@@ -1,0 +1,115 @@
+{% extends "base.html" %}
+
+{% block title %}{{ _('OCR Results') }}{% endblock %}
+
+{% block page_content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+            <div class="page-header">
+                <h1>{{ _('OCR Results') }}</h1>
+                <p class="lead">{{ _('Text extracted from') }}: <strong>{{ original_filename }}</strong></p>
+            </div>
+            
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">{{ _('Extracted Text') }}</h3>
+                        </div>
+                        <div class="panel-body">
+                            {% if extracted_text %}
+                                <div class="well" style="max-height: 400px; overflow-y: auto;">
+                                    <pre style="white-space: pre-wrap; word-wrap: break-word;">{{ extracted_text }}</pre>
+                                </div>
+                                <div class="text-right">
+                                    <button class="btn btn-sm btn-primary" onclick="copyToClipboard('extracted-text')">
+                                        {{ _('Copy Text') }}
+                                    </button>
+                                </div>
+                            {% else %}
+                                <p class="text-muted">{{ _('No text was extracted from the image.') }}</p>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                
+                {% if extract_urls %}
+                <div class="col-md-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">{{ _('Extracted URLs') }}</h3>
+                        </div>
+                        <div class="panel-body">
+                            {% if urls %}
+                                <div class="well" style="max-height: 400px; overflow-y: auto;">
+                                    {% for url in urls %}
+                                        <div class="url-item" style="margin-bottom: 10px;">
+                                            <a href="{{ url }}" target="_blank" class="btn btn-sm btn-link" style="word-break: break-all;">
+                                                {{ url }}
+                                            </a>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                                <div class="text-right">
+                                    <button class="btn btn-sm btn-primary" onclick="copyUrlsToClipboard()">
+                                        {{ _('Copy URLs') }}
+                                    </button>
+                                </div>
+                            {% else %}
+                                <p class="text-muted">{{ _('No URLs were found in the image.') }}</p>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+            
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="text-center">
+                        <a href="{{ url_for('ocr') }}" class="btn btn-lg btn-primary">
+                            {{ _('Process Another Image') }}
+                        </a>
+                        <a href="{{ url_for('index') }}" class="btn btn-lg btn-default">
+                            {{ _('Back to Home') }}
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+function copyToClipboard(elementId) {
+    const element = document.getElementById(elementId);
+    if (element) {
+        element.select();
+        document.execCommand('copy');
+        alert('{{ _("Text copied to clipboard!") }}');
+    }
+}
+
+function copyUrlsToClipboard() {
+    const urls = [];
+    const urlElements = document.querySelectorAll('.url-item a');
+    urlElements.forEach(function(element) {
+        urls.push(element.href);
+    });
+    
+    const textArea = document.createElement('textarea');
+    textArea.value = urls.join('\n');
+    document.body.appendChild(textArea);
+    textArea.select();
+    document.execCommand('copy');
+    document.body.removeChild(textArea);
+    
+    alert('{{ _("URLs copied to clipboard!") }}');
+}
+</script>
+
+{% if extracted_text %}
+<textarea id="extracted-text" style="position: absolute; left: -9999px;">{{ extracted_text }}</textarea>
+{% endif %}
+{% endblock %}

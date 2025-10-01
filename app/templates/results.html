@@ -1,0 +1,175 @@
+{% extends "base.html" %}
+
+{% block title %}Video Captions{% endblock %}
+
+{% block page_content %}
+<div class="page-header">
+    <h1>Captions Generated</h1>
+    <p class="lead">Captions for: {{ original_filename }}</p>
+</div>
+
+{% if original_filename %}
+    {% set file_ext = original_filename.lower().split('.')[-1] %}
+    {% if file_ext in ['mp4', 'avi', 'mov', 'mkv', 'webm'] %}
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Video Player</h3>
+                    </div>
+                    <div class="panel-body">
+                        <video controls width="100%" style="max-width: 800px;">
+                            <source src="{{ url_for('static', filename='uploads/' + original_filename) }}" type="video/{{ file_ext }}">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% elif file_ext in ['mp3', 'wav', 'ogg', 'm4a', 'aac'] %}
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Audio Player</h3>
+                    </div>
+                    <div class="panel-body">
+                        <audio controls style="width: 100%; max-width: 600px;">
+                            <source src="{{ url_for('static', filename='uploads/' + original_filename) }}" type="audio/{{ file_ext }}">
+                            Your browser does not support the audio tag.
+                        </audio>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+{% endif %}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Generated Captions</h3>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h4>Original Captions</h4>
+                        <textarea class="form-control" rows="20" readonly id="original-srt-content">{% for caption in original_captions %}
+{{ caption.id }}
+{{ caption.start }} --> {{ caption.end }}
+{{ caption.text }}
+
+{% endfor %}</textarea>
+                        <button class="btn btn-primary" onclick="copyToClipboard('original-srt-content')" style="margin-top: 10px;">
+                            Copy Original SRT
+                        </button>
+                    </div>
+                    <div class="col-md-6">
+                        <h4>Translated Captions</h4>
+                        <textarea class="form-control" rows="20" readonly id="translated-srt-content">{% for caption in translated_captions %}
+{{ caption.id }}
+{{ caption.start }} --> {{ caption.end }}
+{{ caption.text }}
+
+{% endfor %}</textarea>
+                        <button class="btn btn-primary" onclick="copyToClipboard('translated-srt-content')" style="margin-top: 10px;">
+                            Copy Translated SRT
+                        </button>
+                    </div>
+                </div>
+                <div class="row" style="margin-top: 20px;">
+                    <div class="col-md-6">
+                        <h4>Original Plain Text</h4>
+                        <textarea class="form-control" rows="10" readonly id="original-text-content">{% for caption in original_captions %}{{ caption.text }} {% endfor %}</textarea>
+                        <button class="btn btn-primary" onclick="copyToClipboard('original-text-content')" style="margin-top: 10px;">
+                            Copy Original Text
+                        </button>
+                    </div>
+                    <div class="col-md-6">
+                        <h4>Translated Plain Text</h4>
+                        <textarea class="form-control" rows="10" readonly id="translated-text-content">{% for caption in translated_captions %}{{ caption.text }} {% endfor %}</textarea>
+                        <button class="btn btn-primary" onclick="copyToClipboard('translated-text-content')" style="margin-top: 10px;">
+                            Copy Translated Text
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Caption Timeline</h3>
+            </div>
+            <div class="panel-body">
+                <div class="caption-timeline">
+                    {% for caption in original_captions %}
+                    <div class="caption-item" style="margin-bottom: 15px; padding: 10px; border-left: 3px solid #337ab7; background-color: #f8f9fa;">
+                        <div class="row">
+                            <div class="col-md-2">
+                                <strong>{{ caption.start }}</strong>
+                            </div>
+                            <div class="col-md-5">
+                                <strong>Original:</strong><br>
+                                {{ caption.text }}
+                            </div>
+                            <div class="col-md-5">
+                                <strong>Translated:</strong><br>
+                                {{ translated_captions[loop.index0].text }}
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        
+        <div class="text-center">
+            <a href="{{ url_for('index') }}" class="btn btn-primary btn-lg">Process Another Video</a>
+        </div>
+    </div>
+</div>
+
+<script>
+function copyToClipboard(elementId) {
+    const element = document.getElementById(elementId);
+    element.select();
+    element.setSelectionRange(0, 99999); // For mobile devices
+    
+    try {
+        document.execCommand('copy');
+        // Show success message
+        const button = event.target;
+        const originalText = button.textContent;
+        button.textContent = 'Copied!';
+        button.classList.remove('btn-primary');
+        button.classList.add('btn-success');
+        
+        setTimeout(() => {
+            button.textContent = originalText;
+            button.classList.remove('btn-success');
+            button.classList.add('btn-primary');
+        }, 2000);
+    } catch (err) {
+        console.error('Failed to copy text: ', err);
+        alert('Failed to copy text. Please select and copy manually.');
+    }
+}
+</script>
+
+<style>
+.caption-item {
+    transition: background-color 0.3s ease;
+}
+
+.caption-item:hover {
+    background-color: #e9ecef !important;
+}
+
+textarea {
+    font-family: 'Courier New', monospace;
+    font-size: 12px;
+    line-height: 1.4;
+}
+</style>
+{% endblock %}

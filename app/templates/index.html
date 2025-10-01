@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+
+{% block title %}{{ _('Text Extractor') }}{% endblock %}
+
+{% block page_content %}
+<div class="page-header">
+    <h1>{{ _('Text Extractor') }}</h1>
+    <p class="lead">{{ _('Upload a video or audio file and get AI-generated captions with translation support') }}</p>
+</div>
+
+<div class="row">
+    <div class="col-md-8 col-md-offset-2">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">{{ _('Upload Media') }}</h3>
+            </div>
+            <div class="panel-body">
+                <form method="POST" action="{{ url_for('process_video') }}" enctype="multipart/form-data">
+                    {{ form.hidden_tag() }}
+                    
+                    <div class="form-group">
+                        {{ form.video_file.label(class="control-label") }}
+                        {{ form.video_file(class="form-control") }}
+                        {% if form.video_file.errors %}
+                            <div class="text-danger">
+                                {% for error in form.video_file.errors %}
+                                    <small>{{ error }}</small>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                {{ form.model.label(class="control-label") }}
+                                {{ form.model(class="form-control") }}
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                {{ form.src_language.label(class="control-label") }}
+                                {{ form.src_language(class="form-control") }}
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        {{ form.dest_language.label(class="control-label") }}
+                        {{ form.dest_language(class="form-control") }}
+                    </div>
+                    
+                    <div class="form-group">
+                        {{ form.translation_method.label(class="control-label") }}
+                        {{ form.translation_method(class="form-control") }}
+                    </div>
+                    
+                    <div class="form-group">
+                        {{ form.submit_button(class="btn btn-primary btn-lg btn-block") }}
+                    </div>
+                </form>
+            </div>
+        </div>
+        
+        <div class="alert alert-info">
+            <h4>{{ _('Supported Features') }}:</h4>
+            <ul>
+                <li>{{ _('Video formats') }}: MP4, AVI, MOV, MKV</li>
+                <li>{{ _('Audio formats') }}: MP3, WAV, OGG, M4A, AAC, FLAC</li>
+                <li>{{ _('Multiple Whisper models (Tiny to Large)') }}</li>
+                <li>{{ _('Auto language detection') }}</li>
+                <li>{{ _('Translation to multiple languages') }}</li>
+                <li>{{ _('Real-time processing status') }}</li>
+                <li>{{ _('SRT subtitle format output') }}</li>
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}

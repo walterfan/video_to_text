@@ -1,0 +1,167 @@
+# English translations for PROJECT.
+# Copyright (C) 2025 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2025-09-30 09:28+0800\n"
+"PO-Revision-Date: 2025-09-30 09:28+0800\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: app/forms.py:8
+msgid "Upload Video or Audio"
+msgstr ""
+
+#: app/forms.py:9
+msgid "Only video or audio files are allowed!"
+msgstr ""
+
+#: app/forms.py:12
+msgid "Whisper Model"
+msgstr ""
+
+#: app/forms.py:13
+msgid "Tiny (fastest)"
+msgstr ""
+
+#: app/forms.py:14
+msgid "Base"
+msgstr ""
+
+#: app/forms.py:15
+msgid "Small"
+msgstr ""
+
+#: app/forms.py:16
+msgid "Medium"
+msgstr ""
+
+#: app/forms.py:17
+msgid "Large (most accurate)"
+msgstr ""
+
+#: app/forms.py:21
+msgid "Source Language"
+msgstr ""
+
+#: app/forms.py:22
+msgid "Auto-detect"
+msgstr ""
+
+#: app/forms.py:23 app/forms.py:34
+msgid "English"
+msgstr ""
+
+#: app/forms.py:24
+msgid "Chinese"
+msgstr ""
+
+#: app/forms.py:25 app/forms.py:37
+msgid "Japanese"
+msgstr ""
+
+#: app/forms.py:26 app/forms.py:38
+msgid "Korean"
+msgstr ""
+
+#: app/forms.py:27 app/forms.py:39
+msgid "Spanish"
+msgstr ""
+
+#: app/forms.py:28 app/forms.py:40
+msgid "French"
+msgstr ""
+
+#: app/forms.py:29 app/forms.py:41
+msgid "German"
+msgstr ""
+
+#: app/forms.py:33
+msgid "Target Language"
+msgstr ""
+
+#: app/forms.py:35
+msgid "Chinese (Simplified)"
+msgstr ""
+
+#: app/forms.py:36
+msgid "Chinese (Traditional)"
+msgstr ""
+
+#: app/forms.py:45
+msgid "Process Media"
+msgstr ""
+
+#: app/templates/base.html:3 app/templates/base.html:21
+#: app/templates/index.html:3 app/templates/index.html:7
+msgid "Text Extractor"
+msgstr ""
+
+#: app/templates/base.html:25
+msgid "Home"
+msgstr ""
+
+#: app/templates/base.html:26
+msgid "Help"
+msgstr ""
+
+#: app/templates/base.html:27
+msgid "About"
+msgstr ""
+
+#: app/templates/base.html:32
+msgid "Language"
+msgstr ""
+
+#: app/templates/index.html:8
+msgid ""
+"Upload a video or audio file and get AI-generated captions with "
+"translation support"
+msgstr ""
+
+#: app/templates/index.html:15
+msgid "Upload Media"
+msgstr ""
+
+#: app/templates/index.html:61
+msgid "Supported Features"
+msgstr ""
+
+#: app/templates/index.html:63
+msgid "Video formats"
+msgstr ""
+
+#: app/templates/index.html:64
+msgid "Audio formats"
+msgstr ""
+
+#: app/templates/index.html:65
+msgid "Multiple Whisper models (Tiny to Large)"
+msgstr ""
+
+#: app/templates/index.html:66
+msgid "Auto language detection"
+msgstr ""
+
+#: app/templates/index.html:67
+msgid "Translation to multiple languages"
+msgstr ""
+
+#: app/templates/index.html:68
+msgid "Real-time processing status"
+msgstr ""
+
+#: app/templates/index.html:69
+msgid "SRT subtitle format output"
+msgstr ""
+

@@ -1,0 +1,399 @@
+# Chinese translations for PROJECT.
+# Copyright (C) 2025 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2025-09-30 09:28+0800\n"
+"PO-Revision-Date: 2025-09-30 09:28+0800\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: zh\n"
+"Language-Team: zh <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: app/forms.py:8
+msgid "Upload Video or Audio"
+msgstr "上传视频或音频"
+
+#: app/forms.py:9
+msgid "Only video or audio files are allowed!"
+msgstr "只允许视频或音频文件！"
+
+#: app/forms.py:12
+msgid "Whisper Model"
+msgstr "Whisper模型"
+
+#: app/forms.py:13
+msgid "Tiny (fastest)"
+msgstr "Tiny（最快）"
+
+#: app/forms.py:14
+msgid "Base"
+msgstr "Base"
+
+#: app/forms.py:15
+msgid "Small"
+msgstr "Small"
+
+#: app/forms.py:16
+msgid "Medium"
+msgstr "Medium"
+
+#: app/forms.py:17
+msgid "Large (most accurate)"
+msgstr "Large（最准确）"
+
+#: app/forms.py:21
+msgid "Source Language"
+msgstr "源语言"
+
+#: app/forms.py:22
+msgid "Auto-detect"
+msgstr "自动检测"
+
+#: app/forms.py:23 app/forms.py:34
+msgid "English"
+msgstr "英语"
+
+#: app/forms.py:24
+msgid "Chinese"
+msgstr "中文"
+
+#: app/forms.py:25 app/forms.py:37
+msgid "Japanese"
+msgstr "日语"
+
+#: app/forms.py:26 app/forms.py:38
+msgid "Korean"
+msgstr "韩语"
+
+#: app/forms.py:27 app/forms.py:39
+msgid "Spanish"
+msgstr "西班牙语"
+
+#: app/forms.py:28 app/forms.py:40
+msgid "French"
+msgstr "法语"
+
+#: app/forms.py:29 app/forms.py:41
+msgid "German"
+msgstr "德语"
+
+#: app/forms.py:33
+msgid "Target Language"
+msgstr "目标语言"
+
+#: app/forms.py:35
+msgid "Chinese (Simplified)"
+msgstr "中文（简体）"
+
+#: app/forms.py:36
+msgid "Chinese (Traditional)"
+msgstr "中文（繁体）"
+
+#: app/forms.py:45
+msgid "Process Media"
+msgstr "处理媒体"
+
+#: app/forms.py:46
+msgid "Translation Method"
+msgstr "翻译方法"
+
+#: app/forms.py:47
+msgid "LLM (ChatGPT) - Better Quality"
+msgstr "LLM (ChatGPT) - 更高质量"
+
+#: app/forms.py:48
+msgid "Google Translate - Faster"
+msgstr "Google翻译 - 更快"
+
+#: app/forms.py:55
+msgid "Username"
+msgstr "用户名"
+
+#: app/forms.py:56
+msgid "Enter username"
+msgstr "输入用户名"
+
+#: app/forms.py:57
+msgid "Password"
+msgstr "密码"
+
+#: app/forms.py:58
+msgid "Enter password"
+msgstr "输入密码"
+
+#: app/forms.py:59
+msgid "Remember Me"
+msgstr "记住我"
+
+#: app/forms.py:60
+msgid "Sign In"
+msgstr "登录"
+
+#: app/forms.py:63
+msgid "Choose username"
+msgstr "选择用户名"
+
+#: app/forms.py:64
+msgid "Email"
+msgstr "邮箱"
+
+#: app/forms.py:65
+msgid "Enter email"
+msgstr "输入邮箱"
+
+#: app/forms.py:67
+msgid "Choose password"
+msgstr "选择密码"
+
+#: app/forms.py:68
+msgid "Repeat Password"
+msgstr "重复密码"
+
+#: app/forms.py:69
+msgid "Repeat password"
+msgstr "重复密码"
+
+#: app/forms.py:70
+msgid "Passwords must match"
+msgstr "密码必须匹配"
+
+#: app/forms.py:72
+msgid "Register"
+msgstr "注册"
+
+#: app/forms.py:75
+msgid "Please use a different username."
+msgstr "请使用不同的用户名。"
+
+#: app/forms.py:79
+msgid "Please use a different email address."
+msgstr "请使用不同的邮箱地址。"
+
+#: app/views.py:132
+msgid "Invalid username or password"
+msgstr "用户名或密码无效"
+
+#: app/views.py:141
+msgid "Sign In"
+msgstr "登录"
+
+#: app/views.py:145
+msgid "Register"
+msgstr "注册"
+
+#: app/views.py:154
+msgid "Congratulations, you are now registered!"
+msgstr "恭喜，您已成功注册！"
+
+#: app/templates/login.html:6
+msgid "New user?"
+msgstr "新用户？"
+
+#: app/templates/login.html:6
+msgid "Click to register!"
+msgstr "点击注册！"
+
+#: app/templates/register.html:6
+msgid "Already have an account?"
+msgstr "已有账户？"
+
+#: app/templates/register.html:6
+msgid "Click to sign in!"
+msgstr "点击登录！"
+
+#: app/templates/base.html:45
+msgid "Logout"
+msgstr "退出登录"
+
+#: app/templates/base.html:49
+msgid "Login"
+msgstr "登录"
+
+#: app/forms.py:85
+msgid "Upload Image"
+msgstr "上传图片"
+
+#: app/forms.py:86
+msgid "Only image files are allowed!"
+msgstr "只允许图片文件！"
+
+#: app/forms.py:89
+msgid "Extract URLs"
+msgstr "提取URL"
+
+#: app/forms.py:93
+msgid "Extract Text"
+msgstr "提取文字"
+
+#: app/templates/base.html:26
+msgid "OCR"
+msgstr "OCR"
+
+#: app/templates/ocr.html:3
+msgid "OCR - Extract Text from Images"
+msgstr "OCR - 从图片提取文字"
+
+#: app/templates/ocr.html:7
+msgid "Upload an image to extract text and URLs using Optical Character Recognition (OCR)"
+msgstr "上传图片以使用光学字符识别（OCR）提取文字和URL"
+
+#: app/templates/ocr.html:12
+msgid "Upload Image"
+msgstr "上传图片"
+
+#: app/templates/ocr.html:33
+msgid "Supported Features"
+msgstr "支持的功能"
+
+#: app/templates/ocr.html:35
+msgid "Image formats: PNG, JPG, JPEG, GIF, BMP, TIFF"
+msgstr "图片格式：PNG、JPG、JPEG、GIF、BMP、TIFF"
+
+#: app/templates/ocr.html:36
+msgid "Text extraction from images"
+msgstr "从图片提取文字"
+
+#: app/templates/ocr.html:37
+msgid "URL detection and extraction"
+msgstr "URL检测和提取"
+
+#: app/templates/ocr.html:38
+msgid "Multiple language support"
+msgstr "多语言支持"
+
+#: app/templates/ocr.html:42
+msgid "Tips for Best Results"
+msgstr "最佳效果提示"
+
+#: app/templates/ocr.html:44
+msgid "Use high-resolution images with clear text"
+msgstr "使用高分辨率、文字清晰的图片"
+
+#: app/templates/ocr.html:45
+msgid "Ensure good contrast between text and background"
+msgstr "确保文字和背景有良好的对比度"
+
+#: app/templates/ocr.html:46
+msgid "Avoid blurry or distorted images"
+msgstr "避免模糊或变形的图片"
+
+#: app/templates/ocr.html:47
+msgid "Text should be horizontal and not rotated"
+msgstr "文字应该是水平的，不要旋转"
+
+#: app/templates/ocr_results.html:3
+msgid "OCR Results"
+msgstr "OCR结果"
+
+#: app/templates/ocr_results.html:6
+msgid "Text extracted from"
+msgstr "从以下文件提取的文字"
+
+#: app/templates/ocr_results.html:12
+msgid "Extracted Text"
+msgstr "提取的文字"
+
+#: app/templates/ocr_results.html:20
+msgid "No text was extracted from the image."
+msgstr "未能从图片中提取到文字。"
+
+#: app/templates/ocr_results.html:22
+msgid "Copy Text"
+msgstr "复制文字"
+
+#: app/templates/ocr_results.html:28
+msgid "Extracted URLs"
+msgstr "提取的URL"
+
+#: app/templates/ocr_results.html:40
+msgid "No URLs were found in the image."
+msgstr "在图片中未找到URL。"
+
+#: app/templates/ocr_results.html:42
+msgid "Copy URLs"
+msgstr "复制URL"
+
+#: app/templates/ocr_results.html:50
+msgid "Process Another Image"
+msgstr "处理另一张图片"
+
+#: app/templates/ocr_results.html:53
+msgid "Back to Home"
+msgstr "返回首页"
+
+#: app/templates/ocr_results.html:60
+msgid "Text copied to clipboard!"
+msgstr "文字已复制到剪贴板！"
+
+#: app/templates/ocr_results.html:72
+msgid "URLs copied to clipboard!"
+msgstr "URL已复制到剪贴板！"
+
+#: app/templates/base.html:3 app/templates/base.html:21 app/templates/index.html:3 app/templates/index.html:7
+msgid "Text Extractor"
+msgstr "音频/视频转文字"
+
+#: app/templates/base.html:25
+msgid "Home"
+msgstr "首页"
+
+#: app/templates/base.html:26
+msgid "Help"
+msgstr "帮助"
+
+#: app/templates/base.html:27
+msgid "About"
+msgstr "关于"
+
+#: app/templates/base.html:32
+msgid "Language"
+msgstr "语言"
+
+#: app/templates/index.html:8
+msgid "Upload a video or audio file and get AI-generated captions with translation support"
+msgstr "上传视频或音频文件，获取AI生成的字幕和翻译支持"
+
+#: app/templates/index.html:15
+msgid "Upload Media"
+msgstr "上传媒体"
+
+#: app/templates/index.html:61
+msgid "Supported Features"
+msgstr "支持的功能"
+
+#: app/templates/index.html:63
+msgid "Video formats"
+msgstr "视频格式"
+
+#: app/templates/index.html:64
+msgid "Audio formats"
+msgstr "音频格式"
+
+#: app/templates/index.html:65
+msgid "Multiple Whisper models (Tiny to Large)"
+msgstr "多种Whisper模型（从Tiny到Large）"
+
+#: app/templates/index.html:66
+msgid "Auto language detection"
+msgstr "自动语言检测"
+
+#: app/templates/index.html:67
+msgid "Translation to multiple languages"
+msgstr "多语言翻译"
+
+#: app/templates/index.html:68
+msgid "Real-time processing status"
+msgstr "实时处理状态"
+
+#: app/templates/index.html:69
+msgid "SRT subtitle format output"
+msgstr "SRT字幕格式输出"
